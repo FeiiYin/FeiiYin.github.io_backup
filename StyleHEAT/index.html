@@ -1,715 +1,713 @@
 <!DOCTYPE html>
 <!-- saved from url=(0035)https://nvlabs.github.io/stylegan3/ -->
-<html lang="" xml:lang="" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="" xml:lang="" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-  <meta content="width=device-width, initial-scale=1" name="viewport">
-  <title>
-   StyleHEAT
-  </title>
-  <meta content="StyleHEAT: One-Shot High-Resolution Editable Talking Face Generation via Pretrained StyleGAN" property="og:title">
-  <meta content="StyleHEAT: One-Shot High-Resolution Editable Talking Face Generation via Pretrained StyleGAN" name="description" property="og:description">
-  <meta content="https://feiiyin.github.io/StyleHEAT/" property="og:url">
-  <style type="text/css">
-   :root {
-    --small-thumb-border-radius: 2px;
-    --larger-thumb-border-radius: 3px;
-}
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>
+        StyleHEAT
+    </title>
+    <meta content="StyleHEAT: One-Shot High-Resolution Editable Talking Face Generation via Pretrained StyleGAN"
+          property="og:title">
+    <meta content="StyleHEAT: One-Shot High-Resolution Editable Talking Face Generation via Pretrained StyleGAN"
+          name="description" property="og:description">
+    <meta content="https://feiiyin.github.io/StyleHEAT/" property="og:url">
+    <!-- Format -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="../format/app.css">
+    <link rel="stylesheet" href="../format/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script src="../format/app.js"></script>
 
-html {
-  font-size: 14px;
-  line-height: 1.6;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
+    <style type="text/css">
+        :root {
+            --small-thumb-border-radius: 2px;
+            --larger-thumb-border-radius: 3px;
+        }
 
-@media(min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
+        html {
+            font-size: 14px;
+            line-height: 1.6;
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
 
-body {
-    margin: 0px;
-    padding: 0px;
-}
+        @media (min-width: 768px) {
+            html {
+                font-size: 16px;
+            }
+        }
 
-.base-grid,
-.n-header,
-.n-byline,
-.n-title,
-.n-article,
-.n-footer {
-    display: grid;
-    justify-items: stretch;
-    grid-template-columns: [screen-start] 8px [page-start kicker-start text-start gutter-start middle-start] 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr [text-end page-end gutter-end kicker-end middle-end] 8px [screen-end];
-    grid-column-gap: 8px;
-}
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
 
-.grid {
-  display: grid;
-  grid-column-gap: 8px;
-}
+        .base-grid,
+        .n-header,
+        .n-byline,
+        .n-title,
+        .n-article,
+        .n-footer {
+            display: grid;
+            justify-items: stretch;
+            grid-template-columns: [screen-start] 8px [page-start kicker-start text-start gutter-start middle-start] 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr [text-end page-end gutter-end kicker-end middle-end] 8px [screen-end];
+            grid-column-gap: 8px;
+        }
 
-@media(min-width: 768px) {
-    .base-grid,
-    .n-header,
-    .n-byline,
-    .n-title,
-    .n-article,
-    .n-footer {
-        display: grid;
-        justify-items: stretch;
-        grid-template-columns: [screen-start] 1fr [page-start kicker-start middle-start text-start] 45px 45px 45px 45px 45px 45px 45px 45px [ kicker-end text-end gutter-start] 45px [middle-end] 45px [page-end gutter-end] 1fr [screen-end];
-        grid-column-gap: 16px;
-    }
+        .grid {
+            display: grid;
+            grid-column-gap: 8px;
+        }
 
-    .grid {
-        grid-column-gap: 16px;
-    }
-}
+        @media (min-width: 768px) {
+            .base-grid,
+            .n-header,
+            .n-byline,
+            .n-title,
+            .n-article,
+            .n-footer {
+                display: grid;
+                justify-items: stretch;
+                grid-template-columns: [screen-start] 1fr [page-start kicker-start middle-start text-start] 45px 45px 45px 45px 45px 45px 45px 45px [ kicker-end text-end gutter-start] 45px [middle-end] 45px [page-end gutter-end] 1fr [screen-end];
+                grid-column-gap: 16px;
+            }
 
-@media(min-width: 1000px) {
-    .base-grid,
-    .n-header,
-    .n-byline,
-    .n-title,
-    .n-article,
-    .n-footer {
-        display: grid;
-        justify-items: stretch;
-        grid-template-columns: [screen-start] 1fr [page-start kicker-start] 50px [middle-start] 50px [text-start kicker-end] 50px 50px 50px 50px 50px 50px 50px 50px [text-end gutter-start] 50px [middle-end] 50px [page-end gutter-end] 1fr [screen-end];
-        grid-column-gap: 16px;
-    }
+            .grid {
+                grid-column-gap: 16px;
+            }
+        }
 
-    .grid {
-        grid-column-gap: 16px;
-    }
-}
+        @media (min-width: 1000px) {
+            .base-grid,
+            .n-header,
+            .n-byline,
+            .n-title,
+            .n-article,
+            .n-footer {
+                display: grid;
+                justify-items: stretch;
+                grid-template-columns: [screen-start] 1fr [page-start kicker-start] 50px [middle-start] 50px [text-start kicker-end] 50px 50px 50px 50px 50px 50px 50px 50px [text-end gutter-start] 50px [middle-end] 50px [page-end gutter-end] 1fr [screen-end];
+                grid-column-gap: 16px;
+            }
 
-@media (min-width: 1180px) {
-    .base-grid,
-    .n-header,
-    .n-byline,
-    .n-title,
-    .n-article,
-    .n-footer {
-        display: grid;
-        justify-items: stretch;
-        grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
-        grid-column-gap: 32px;
-    }
-    .grid {
-        grid-column-gap: 32px;
-    }
+            .grid {
+                grid-column-gap: 16px;
+            }
+        }
 
-}
+        @media (min-width: 1180px) {
+            .base-grid,
+            .n-header,
+            .n-byline,
+            .n-title,
+            .n-article,
+            .n-footer {
+                display: grid;
+                justify-items: stretch;
+                grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+                grid-column-gap: 32px;
+            }
 
-.base-grid {
-  grid-column: screen;
-}
+            .grid {
+                grid-column-gap: 32px;
+            }
 
-/* default grid column assignments */
-.n-title > *  {
-  grid-column: text;
-}
+        }
 
-.n-article > *  {
-  grid-column: text;
-}
+        .base-grid {
+            grid-column: screen;
+        }
 
-.n-header {
-    height: 0px;
-}
+        /* default grid column assignments */
+        .n-title > * {
+            grid-column: text;
+        }
 
-.n-footer {
-    height: 60px;
-}
+        .n-article > * {
+            grid-column: text;
+        }
 
-.n-title {
-    padding: 4rem 0 1.5rem;
-}
+        .n-header {
+            height: 0px;
+        }
 
-.l-page {
-    grid-column: page;
-}
+        .n-footer {
+            height: 60px;
+        }
 
-.l-article {
-    grid-column: text;
-}
+        .n-title {
+            padding: 4rem 0 1.5rem;
+        }
 
-p {
-  margin-top: 0;
-  margin-bottom: 1em;
-}
+        .l-page {
+            grid-column: page;
+        }
 
-.pixelated {
-    image-rendering: pixelated;
-}
+        .l-article {
+            grid-column: text;
+        }
 
-strong {
-    font-weight: 600;
-}
+        p {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
 
-/*------------------------------------------------------------------*/
-/* title */
-.n-title h1 {
-    font-family: "Barlow",system-ui,Arial,sans-serif;
-    color:#082333;
-    grid-column: text;
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 1.1em;
-    margin: 0 0 0.5rem;
-    text-align: center;
-}
+        .pixelated {
+            image-rendering: pixelated;
+        }
 
-@media (min-width: 768px) {
-    .n-title h1 {
-        font-size: 50px;
-    }
-}
+        strong {
+            font-weight: 600;
+        }
 
-/*------------------------------------------------------------------*/
-/* article */
-.n-article {
-    color: rgb(33, 40, 53);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    padding-top: 2rem;
-}
+        /*------------------------------------------------------------------*/
+        /* title */
+        .n-title h1 {
+            font-family: "Barlow", system-ui, Arial, sans-serif;
+            color: #082333;
+            grid-column: text;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.1em;
+            margin: 0 0 0.5rem;
+            text-align: center;
+        }
 
-.n-article h2 {
-    contain: layout style;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 1.25em;
-    margin: 2rem 0 1.5rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding-bottom: 1rem;
-}
+        @media (min-width: 768px) {
+            .n-title h1 {
+                font-size: 50px;
+            }
+        }
 
-@media (min-width: 768px) {
-    .n-article {
-        line-height: 1.7;
-    }
+        /*------------------------------------------------------------------*/
+        /* article */
+        .n-article {
+            color: rgb(33, 40, 53);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding-top: 2rem;
+        }
 
-    .n-article h2 {
-        font-size: 36px;
-    }
-}
+        .n-article h2 {
+            contain: layout style;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 1.25em;
+            margin: 2rem 0 1.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 1rem;
+        }
 
-/*------------------------------------------------------------------*/
-/* byline */
+        @media (min-width: 768px) {
+            .n-article {
+                line-height: 1.7;
+            }
 
-.n-byline {
-  contain: style;
-  overflow: hidden;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  font-size: 0.8rem;
-  line-height: 1.8em;
-  padding: 1.5rem 0;
-  min-height: 1.8em;
-}
+            .n-article h2 {
+                font-size: 36px;
+            }
+        }
 
-.n-byline .byline {
-  grid-column: text;
-}
+        /*------------------------------------------------------------------*/
+        /* byline */
 
-.byline {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
+        .n-byline {
+            contain: style;
+            overflow: hidden;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 0.8rem;
+            line-height: 1.8em;
+            padding: 1.5rem 0;
+            min-height: 1.8em;
+        }
 
-.grid {
-    display: grid;
-    grid-column-gap: 8px;
-}
+        .n-byline .byline {
+            grid-column: text;
+        }
 
-@media (min-width: 768px) {
-.grid {
-    grid-column-gap: 16px;
-}
-}
+        .byline {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
 
-.n-byline p {
-  margin: 0;
-}
+        .grid {
+            display: grid;
+            grid-column-gap: 8px;
+        }
 
-.n-byline h3 {
-    font-size: 0.6rem;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 0.5);
-    margin: 0;
-    text-transform: uppercase;
-}
-.n-byline .authors-affiliations {
-  grid-column-end: span 2;
-  grid-template-columns: 1fr 1fr;
-}
+        @media (min-width: 768px) {
+            .grid {
+                grid-column-gap: 16px;
+            }
+        }
 
-/*------------------------------------------------------------------*/
-/* figures */
-.figure {
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
-}
+        .n-byline p {
+            margin: 0;
+        }
 
-figcaption, .figcaption {
-    color: rgba(0, 0, 0, 0.6);
-    font-size: 12px;
-    line-height: 1.5em;
-}
+        .n-byline h3 {
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.5);
+            margin: 0;
+            text-transform: uppercase;
+        }
 
-ul.authors {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-}
-ul.authors li {
-    padding: 0 0.5rem;
-    display: inline-block;
-}
+        .n-byline .authors-affiliations {
+            grid-column-end: span 2;
+            grid-template-columns: 1fr 1fr;
+        }
 
-ul.authors sup {
-    color: rgb(126,126,126);
-}
+        /*------------------------------------------------------------------*/
+        /* figures */
+        .figure {
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
 
-ul.authors.affiliations  {
-    margin-top: 0.5rem;
-}
+        figcaption, .figcaption {
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 12px;
+            line-height: 1.5em;
+        }
 
-ul.authors.affiliations li {
-    color: rgb(126,126,126);
-}
+        ul.authors {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
 
-/* Download section columns.  This switches between two layouts::after
+        ul.authors li {
+            padding: 0 0.5rem;
+            display: inline-block;
+        }
 
-- two columns on larger viewport sizes: side-by-side paper thumb and links
-- single column: no thumb
- */
-.download-section {
-    display: grid;
-    grid-template-areas: "links";
-}
-.download-section h4 {
-    margin-left: 2.5rem;
-    display: block;
-}
-.download-thumb {
-    grid-area: thumb;
-    display: none;
-}
-.download-links {
-    grid-area: links;
-}
-img.dropshadow {
-    box-shadow: 0 1px 10px rgba(0,0,0, 0.3);
-}
+        ul.authors sup {
+            color: rgb(126, 126, 126);
+        }
 
-@media(min-width: 1180px) {
-    .download-section {
-        display: grid;
-        grid-template-areas: "thumb links";
-    }
-    .download-thumb {
-        display: block;
-    }
-}
+        ul.authors.affiliations {
+            margin-top: 0.5rem;
+        }
 
-/* For BibTeX */
-pre {
-    font-size: 0.9em;
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    border-radius: 3px;
-    background-color: rgb(235, 235, 235);
-    overflow-x: auto;
-}
+        ul.authors.affiliations li {
+            color: rgb(126, 126, 126);
+        }
 
-/* video caption */
+        /* Download section columns.  This switches between two layouts::after
 
-.video {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-}
+        - two columns on larger viewport sizes: side-by-side paper thumb and links
+        - single column: no thumb
+         */
+        .download-section {
+            display: grid;
+            grid-template-areas: "links";
+        }
 
-.videocaption {
-    display: flex;
-    font-size: 16px;
-    line-height: 1.5em;
-    margin-bottom: 1rem;
-    justify-content: center;
-}
-   .disable-selection {
-         user-select: none;
-    -moz-user-select: none; /* Firefox */
-     -ms-user-select: none; /* Internet Explorer */
-  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
- -webkit-user-select: none; /* Chrome, Safari, and Opera */
- -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
-}
+        .download-section h4 {
+            margin-left: 2.5rem;
+            display: block;
+        }
 
-.hidden {
-    display: none;
-}
+        .download-thumb {
+            grid-area: thumb;
+            display: none;
+        }
 
-h3.figtitle {
-    margin-top: 0;
-    margin-bottom: 0;
-}
+        .download-links {
+            grid-area: links;
+        }
 
-.fig-title-line {
-    grid-template-columns: 2fr 0.75fr;
-}
+        img.dropshadow {
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+        }
 
-.fig-thumb-image-row {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-}
+        @media (min-width: 1180px) {
+            .download-section {
+                display: grid;
+                grid-template-areas: "thumb links";
+            }
 
-.fig-thumb-image-row-item {
-    width: 100%;
-    min-height: auto;
-    border-radius: var(--small-thumb-border-radius);
-}
+            .download-thumb {
+                display: block;
+            }
+        }
 
-.fig-dataset-button {
-    border-color: rgba(0,0,0,0);
-    border-width: 1px;
-    border-style: solid;
-    cursor: pointer;
-    opacity: 0.6;
-}
+        /* For BibTeX */
+        pre {
+            font-size: 0.9em;
+            padding-left: 7px;
+            padding-right: 7px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            border-radius: 3px;
+            background-color: rgb(235, 235, 235);
+            overflow-x: auto;
+        }
 
-.fig-dataset-button.active {
-    border-color: rgba(0,0,0,0.7);
-    border-width: 1px;
-    border-style: solid;
-    opacity: 1.0;
-}
+        /* video caption */
 
-.grid {
-    display: grid;
-    grid-column-gap: 8px;
-}
+        .video {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
 
-.fig-3-image-row {
-    margin-top: 1em;
-    grid-template-columns: 1fr 1.3fr 1fr;
-    grid-template-rows: 1fr;
-}
+        .videocaption {
+            display: flex;
+            font-size: 16px;
+            line-height: 1.5em;
+            margin-bottom: 1rem;
+            justify-content: center;
+        }
 
-.fig-3-image-item {
-    justify-self: center;
-    align-self: center;
-    width: 100%;
-    border-radius: var(--larger-thumb-border-radius);
-}
+        h3.figtitle {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
 
-/*---------------------------------------------------------------------*/
-.fig-slider {
-    grid-template-columns: auto 2fr;
-    grid-template-rows: 1fr;
-    margin-top: 1em;
-    align-items: start;
-    justify-content: center;
-}
+        .grid {
+            display: grid;
+            grid-column-gap: 8px;
+        }
 
-.fig-slider img.play_button {
-    margin-right: 8px;
-    cursor: pointer;
-    justify-self: center;
-}
-.fig-slider svg {
-    touch-action: none;
-}
+        .fig-slider img.play_button {
+            margin-right: 8px;
+            cursor: pointer;
+            justify-self: center;
+        }
 
-.fig-preload {
-    display: none;
-}
-/*---------------------------------------------------------------------*/
-  </style>
-  <!-- inline stylesheet files into the above <style> element -->
-  <link href="./Alias-Free Generative Adversarial Networks (StyleGAN3)_files/css" rel="stylesheet">
-  <link as="image" href="./Alias-Free Generative Adversarial Networks (StyleGAN3)_files/paper-pdf-512.png" rel="preload">
-  <link as="image" href="./Alias-Free Generative Adversarial Networks (StyleGAN3)_files/stylegan3-teaser-1920x1006.png" rel="preload">
- </head>
- <body>
-  <div class="n-header">
-  </div>
-  <div class="n-title">
-   <h1>
-    StyleHEAT: One-Shot High-Resolution Editable Talking Face Generation via Pretrained StyleGAN
-   </h1>
-  </div>
-  <div class="n-byline">
-   <div class="byline">
-    <ul class="authors">
-     <li>
-      Fei Yin
-      <sup>
-       1
-      </sup>
-     </li>
-     <li>
-      Yong Zhang
-      <sup>
-       2
-      </sup>
-     </li>
-     <li>
-      Xiaodong Cun
-      <sup>
-       2
-      </sup>
-     </li>
-     <li>
-      Mingdeng Cao
-      <sup>
-       1
-      </sup>
-     </li>
-     <li>
-      Yanbo Fan
-      <sup>
-       2
-      </sup>
-     </li>
-     <li>
-      Xuan Wang
-      <sup>
-       2
-      </sup>
-     </li>
-     <li>
-      Qingyan Bai
-      <sup>
-       1
-      </sup>
-     </li>
-     <li>
-      Baoyuan Wu
-      <sup>
-       3
-      </sup>
-     </li>
-     <li>
-      Jue Wang
-      <sup>
-       2
-      </sup>
-     </li>
-     <li>
-      Yujiu Yang
-      <sup>
-       1
-      </sup>
-     </li>
-    </ul>
-    <ul class="authors affiliations">
-     <li>
-      <sup>
-       1
-      </sup>
-      Tsinghua University
-     </li>
-     <li>
-      <sup>
-       2
-      </sup>
-      Tencent AI Lab
-     </li>
-     <li>
-      <sup>
-       3
-      </sup>
-      The Chinese University of Hong Kong
-     </li>
-    </ul>
-   </div>
-  </div>
-  <div class="n-article">
-   <div class="l-article">
-    <img src="./images/teaser.jpg" width="100%">
-   </div>
-   <h2 id="abstract">
-    Abstract
-   </h2>
-   <p>
-    We investigate the latent feature space of a pre-trained StyleGAN and discover some excellent spatial transformation properties. Based on the observation, we propose a novel unified framework based on a pre-trained StyleGAN that enables a set of powerful functionalities, i.e., high-resolution video generation, disentangled control by driving video or audio, and flexible face editing.
-   </p>
-   <h2 id="links">
-    Links
-   </h2>
-   <div class="grid download-section">
-    <div class="download-thumb">
-     <a href="https://nvlabs-fi-cdn.nvidia.com/stylegan3/stylegan3-paper.pdf">
-      <img class="dropshadow" src="./Alias-Free Generative Adversarial Networks (StyleGAN3)_files/paper-pdf-512.png">
-     </a>
+        .fig-slider svg {
+            touch-action: none;
+        }
+
+        /*---------------------------------------------------------------------*/
+    </style>
+    <!-- inline stylesheet files into the above <style> element -->
+    <link href="./Alias-Free Generative Adversarial Networks (StyleGAN3)_files/css" rel="stylesheet">
+    <link as="image" href="./Alias-Free Generative Adversarial Networks (StyleGAN3)_files/paper-pdf-512.png"
+          rel="preload">
+    <link as="image"
+          href="./Alias-Free Generative Adversarial Networks (StyleGAN3)_files/stylegan3-teaser-1920x1006.png"
+          rel="preload">
+</head>
+<body>
+<div class="n-header">
+</div>
+<div class="n-title">
+    <h1>
+        StyleHEAT: One-Shot High-Resolution Editable Talking Face Generation via Pretrained StyleGAN
+    </h1>
+</div>
+<div class="n-byline">
+    <div class="byline">
+        <ul class="authors">
+            <li>
+                Fei Yin
+                <sup>
+                    1
+                </sup>
+            </li>
+            <li>
+                Yong Zhang
+                <sup>
+                    2
+                </sup>
+            </li>
+            <li>
+                Xiaodong Cun
+                <sup>
+                    2
+                </sup>
+            </li>
+            <li>
+                Mingdeng Cao
+                <sup>
+                    1
+                </sup>
+            </li>
+            <li>
+                Yanbo Fan
+                <sup>
+                    2
+                </sup>
+            </li>
+            <li>
+                Xuan Wang
+                <sup>
+                    2
+                </sup>
+            </li>
+            <li>
+                Qingyan Bai
+                <sup>
+                    1
+                </sup>
+            </li>
+            <li>
+                Baoyuan Wu
+                <sup>
+                    3
+                </sup>
+            </li>
+            <li>
+                Jue Wang
+                <sup>
+                    2
+                </sup>
+            </li>
+            <li>
+                Yujiu Yang
+                <sup>
+                    1
+                </sup>
+            </li>
+        </ul>
+        <ul class="authors affiliations">
+            <li>
+                <sup>
+                    1
+                </sup>
+                Tsinghua University
+            </li>
+            <li>
+                <sup>
+                    2
+                </sup>
+                Tencent AI Lab
+            </li>
+            <li>
+                <sup>
+                    3
+                </sup>
+                The Chinese University of Hong Kong
+            </li>
+        </ul>
     </div>
-    <div class="download-links">
-     <ul>
-      <li>
-       <a href="https://nvlabs-fi-cdn.nvidia.com/stylegan3/stylegan3-paper.pdf">
-        Paper PDF
-       </a>
-      </li>
-      <li>
-       <a href="https://arxiv.org/abs/2106.12423">
-        arXiv
-       </a>
-      </li>
-      <li>
-       <a href="https://github.com/NVlabs/stylegan3">
-        Code release on GitHub
-       </a>
-      </li>
-     </ul>
+</div>
+<div class="n-article">
+    <div class="l-article">
+        <img src="./images/teaser.jpg" width="100%">
     </div>
-   </div>
-   <h2 id="videos">
-    Videos
-   </h2>
-   <div class="l-page video">
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/same_id_1.mp4#t=0.001" type="video/mp4">
-    </video>
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/same_id_2.mp4#t=0.001" type="video/mp4">
-    </video>
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/same_id_3.mp4#t=0.001" type="video/mp4">
-    </video>
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/same_id_4.mp4#t=0.001" type="video/mp4">
-    </video>
-    <div class="videocaption">
-     <div>
-      <strong>
-       Video 1:
-      </strong>
-      Same-identity Reconstruction
-     </div>
-    </div>
-   </div>
-   <div class="l-page video">
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/cross_id_1.mp4#t=0.001" type="video/mp4">
-    </video>
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/cross_id_1_hr.mp4#t=0.001" type="video/mp4">
-    </video>
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/cross_id_2.mp4#t=0.001" type="video/mp4">
-    </video>
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/cross_id_3.mp4#t=0.001" type="video/mp4">
-    </video>
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/cross_id_4.mp4#t=0.001" type="video/mp4">
-    </video>
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/cross_id_5.mp4#t=0.001" type="video/mp4">
-    </video>
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/cross_id_6.mp4#t=0.001" type="video/mp4">
-    </video>
+    <h2 id="abstract">
+        Abstract
+    </h2>
+    <p>
+        We investigate the latent feature space of a pre-trained StyleGAN and discover some excellent spatial
+        transformation properties. Based on the observation, we propose a novel unified framework based on a pre-trained
+        StyleGAN that enables a set of powerful functionalities, i.e., high-resolution video generation, disentangled
+        control by driving video or audio, and flexible face editing.
+    </p>
+    <h2 id="links">
+        Links
+    </h2>
+    <!--    <div class="grid download-section">-->
+    <!--        <div class="download-thumb">-->
+    <!--            <a href="https://nvlabs-fi-cdn.nvidia.com/stylegan3/stylegan3-paper.pdf">-->
+    <!--                <img class="dropshadow"-->
+    <!--                     src="./Alias-Free Generative Adversarial Networks (StyleGAN3)_files/paper-pdf-512.png">-->
+    <!--            </a>-->
+    <!--        </div>-->
+    <!--        <div class="download-links">-->
+    <!--            <ul>-->
+    <!--                <li>-->
+    <!--                    <a href="https://nvlabs-fi-cdn.nvidia.com/stylegan3/stylegan3-paper.pdf">-->
+    <!--                        Paper PDF-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--                <li>-->
+    <!--                    <a href="https://arxiv.org/abs/2106.12423">-->
+    <!--                        arXiv-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--                <li>-->
+    <!--                    <a href="https://github.com/NVlabs/stylegan3">-->
+    <!--                        Code release on GitHub-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--            </ul>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 text-center">
+            <ul class="nav nav-pills nav-justified">
+                <li>
+                    <a href="https://feiiyin.github.io/StyleHEAT/">
+                        <img src="../images/slide_icon.jpg" height="100px"><br>
+                        <h4><strong>Paper</strong></h4>
+                    </a>
+                </li>
+                <li>
 
-    <div class="videocaption">
-     <div>
-      <strong>
-       Video 2:
-      </strong>
-      Cross-identity Reenactment
-     </div>
+                    <a href="https://feiiyin.github.io/StyleHEAT/">
+                        <img src="../images/youtube_icon.jpg" height="100px"><br>
+                        <h4><strong>Video</strong></h4>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://feiiyin.github.io/StyleHEAT/">
+                        <img src="../images/github_icon.jpg" height="100px"><br>
+                        <h4><strong>Code</strong></h4>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-   </div>
+    <h2 id="videos">
+        Videos
+    </h2>
+    <div class="video">
+        <!--    <div class="l-page video">-->
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/same_id_1.mp4#t=0.001" type="video/mp4">
+        </video>
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/same_id_2.mp4#t=0.001" type="video/mp4">
+        </video>
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/same_id_3.mp4#t=0.001" type="video/mp4">
+        </video>
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/same_id_4.mp4#t=0.001" type="video/mp4">
+        </video>
+        <div class="videocaption">
+            <div>
+                <strong>
+                    Video 1:
+                </strong>
+                Same-identity Reconstruction
+            </div>
+        </div>
+    </div>
+    <div class="video">
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/cross_id_1.mp4#t=0.001" type="video/mp4">
+        </video>
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/cross_id_1_hr.mp4#t=0.001" type="video/mp4">
+        </video>
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/cross_id_2.mp4#t=0.001" type="video/mp4">
+        </video>
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/cross_id_3.mp4#t=0.001" type="video/mp4">
+        </video>
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/cross_id_4.mp4#t=0.001" type="video/mp4">
+        </video>
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/cross_id_5.mp4#t=0.001" type="video/mp4">
+        </video>
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/cross_id_6.mp4#t=0.001" type="video/mp4">
+        </video>
 
-   <div class="l-page video">
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/audio_1.mp4#t=0.001" type="video/mp4">
-    </video>
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/audio_2.mp4#t=0.001" type="video/mp4">
-    </video>
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/audio_3.mp4#t=0.001" type="video/mp4">
-    </video>
-    <div class="videocaption">
-     <div>
-      <strong>
-       Video 3:
-      </strong>
-      Audio Driven
-     </div>
+        <div class="videocaption">
+            <div>
+                <strong>
+                    Video 2:
+                </strong>
+                Cross-identity Reenactment
+            </div>
+        </div>
     </div>
-   </div>
-   <div class="l-page video">
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/intuitive.mp4#t=0.001" type="video/mp4">
-    </video>
-    <div class="videocaption">
-     <div>
-      <strong>
-       Video 4:
-      </strong>
-      Intuitive Editing
-     </div>
-    </div>
-   </div>
-   <div class="l-page video">
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/attribute_1.mp4#t=0.001" type="video/mp4">
-    </video>
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/attribute_2.mp4#t=0.001" type="video/mp4">
-    </video>
-    <video controls="" loop="" width="100%">
-     <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
-     <source src="./videos/attribute_3.mp4#t=0.001" type="video/mp4">
-    </video>
-    <div class="videocaption">
-     <div>
-      <strong>
-       Video 5:
-      </strong>
-      Attribute Editing
-     </div>
-    </div>
-   </div>
 
-   <h2 id="citation">
-    Citation
-   </h2>
-   <pre><code>@inproceedings{Karras2021,
-  author = {Tero Karras and Miika Aittala and Samuli Laine and Erik H\"ark\"onen and Janne Hellsten and Jaakko Lehtinen and Timo Aila},
-  title = {Alias-Free Generative Adversarial Networks},
-  booktitle = {Proc. NeurIPS},
-  year = {2021}
+    <div class="video">
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/audio_1.mp4#t=0.001" type="video/mp4">
+        </video>
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/audio_2.mp4#t=0.001" type="video/mp4">
+        </video>
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/audio_3.mp4#t=0.001" type="video/mp4">
+        </video>
+        <div class="videocaption">
+            <div>
+                <strong>
+                    Video 3:
+                </strong>
+                Audio Driven
+            </div>
+        </div>
+    </div>
+    <div class="video">
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/intuitive.mp4#t=0.001" type="video/mp4">
+        </video>
+        <div class="videocaption">
+            <div>
+                <strong>
+                    Video 4:
+                </strong>
+                Intuitive Editing
+            </div>
+        </div>
+    </div>
+    <div class="video">
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/attribute_1.mp4#t=0.001" type="video/mp4">
+        </video>
+        <video controls="" loop="" width="100%">
+            <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+            <source src="./videos/attribute_2.mp4#t=0.001" type="video/mp4">
+        </video>
+        <!--    <video controls="" loop="" width="100%">-->
+        <!--     &lt;!&ndash; t=0.001 is a hack to make iPhone show video thumbnail &ndash;&gt;-->
+        <!--     <source src="./videos/attribute_3.mp4#t=0.001" type="video/mp4">-->
+        <!--    </video>-->
+        <div class="videocaption">
+            <div>
+                <strong>
+                    Video 5:
+                </strong>
+                Attribute Editing
+            </div>
+        </div>
+    </div>
+    <h2 id="pipeline">
+        Pipeline
+    </h2>
+    <div class="l-article">
+        <img src="./images/pipeline.jpg" width="100%">
+    </div>
+
+    <h2 id="citation">
+        Citation
+    </h2>
+    <pre><code>@inproceedings{StyleHEAT2022,
+  author = {Authors},
+  title = {StyleHEAT: One-Shot High-Resolution Editable Talking Face Generation via Pretrained StyleGAN},
+  booktitle = {Arxiv},
+  year = {2022}
 }</code></pre>
-  </div>
-  <div class="n-footer">
-  </div>
+</div>
+<div class="n-footer">
+</div>
 
 
-</body></html>
+</body>
+</html>
